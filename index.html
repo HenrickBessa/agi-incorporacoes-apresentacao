@@ -1,0 +1,1298 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="noindex" />
+    <title>AGI · San Remo · Apresentação</title>
+    <meta
+      name="description"
+      content="Site da AGI Incorporações, hub do San Remo e painel de leads: o fluxo de ponta a ponta, telas, segurança e medição."
+    />
+    <style>
+      /* Identidade do site (tokens de app/globals.css) e fontes locais de assets/fontes. */
+      @font-face {
+        font-family: 'Cormorant Garamond';
+        src: url('fonts/cormorant-garamond-latin-400-normal.woff2') format('woff2');
+        font-weight: 400;
+        font-style: normal;
+        font-display: swap;
+      }
+      @font-face {
+        font-family: 'Cormorant Garamond';
+        src: url('fonts/cormorant-garamond-latin-400-italic.woff2') format('woff2');
+        font-weight: 400;
+        font-style: italic;
+        font-display: swap;
+      }
+      @font-face {
+        font-family: 'Cormorant Garamond';
+        src: url('fonts/cormorant-garamond-latin-500-normal.woff2') format('woff2');
+        font-weight: 500;
+        font-style: normal;
+        font-display: swap;
+      }
+      @font-face {
+        font-family: 'Jost';
+        src: url('fonts/jost-latin-400-normal.woff2') format('woff2');
+        font-weight: 400;
+        font-display: swap;
+      }
+      @font-face {
+        font-family: 'Jost';
+        src: url('fonts/jost-latin-500-normal.woff2') format('woff2');
+        font-weight: 500;
+        font-display: swap;
+      }
+
+      :root {
+        --teal: #013a40;
+        --teal-2: #0a4a51;
+        --teal-3: #14585f;
+        --cream: #f6f1e6;
+        --sand: #eadfcb;
+        --sand-2: #f1e9da;
+        --gold: #b08d4c;
+        --gold-2: #c9a762;
+        --ink: #1e2b2d;
+        --muted: #56615f;
+        --line: #d8cdb6;
+        --green: #427010;
+        --red: #971111;
+        --white: #ffffff;
+        --serif: 'Cormorant Garamond', Georgia, serif;
+        --sans: 'Jost', system-ui, sans-serif;
+        --wide: 76rem;
+        --gutter: clamp(1rem, 4vw, 3rem);
+        --radius: 16px;
+        --shadow: 0 18px 40px -18px rgb(1 58 64 / 0.3);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+      html {
+        scroll-behavior: smooth;
+        -webkit-text-size-adjust: 100%;
+      }
+      body {
+        margin: 0;
+        background: var(--cream);
+        color: var(--ink);
+        font-family: var(--sans);
+        font-size: 1rem;
+        line-height: 1.6;
+      }
+      img {
+        display: block;
+        max-width: 100%;
+        height: auto;
+      }
+      h1,
+      h2,
+      h3 {
+        font-family: var(--serif);
+        font-weight: 500;
+        letter-spacing: -0.01em;
+        line-height: 1.1;
+        text-wrap: balance;
+        margin: 0;
+        color: var(--teal);
+      }
+      p {
+        margin: 0;
+        text-wrap: pretty;
+      }
+      a {
+        color: inherit;
+      }
+      :focus-visible {
+        outline: 2px solid var(--teal);
+        outline-offset: 3px;
+      }
+
+      .caps {
+        font-size: 0.75rem;
+        font-weight: 500;
+        letter-spacing: 0.22em;
+        text-transform: uppercase;
+      }
+      .rule {
+        display: block;
+        width: 4rem;
+        height: 3px;
+        background: linear-gradient(
+          to right,
+          var(--green) 0 33.33%,
+          var(--white) 33.33% 66.66%,
+          var(--red) 66.66% 100%
+        );
+      }
+      .wrap {
+        max-width: var(--wide);
+        margin: 0 auto;
+        padding: 0 var(--gutter);
+      }
+      section.slide {
+        padding: clamp(4rem, 3rem + 5vw, 8rem) 0;
+        border-bottom: 1px solid var(--line);
+      }
+      section.dark {
+        background: var(--teal);
+        color: var(--cream);
+        border-bottom: 0;
+      }
+      section.dark h2,
+      section.dark h3 {
+        color: var(--cream);
+      }
+      section.sand {
+        background: var(--sand-2);
+      }
+      .eyebrow {
+        color: var(--gold);
+        margin-bottom: 1rem;
+      }
+      .dark .eyebrow {
+        color: var(--gold-2);
+      }
+      .title {
+        font-size: clamp(2.5rem, 1.8rem + 3vw, 3.75rem);
+        margin-bottom: 1.25rem;
+      }
+      .lead {
+        max-width: 44rem;
+        font-size: 1.125rem;
+        margin-top: 1.5rem;
+      }
+      .dark .lead {
+        color: var(--sand);
+      }
+      .grid {
+        display: grid;
+        gap: clamp(1.25rem, 2vw, 2rem);
+        margin-top: clamp(2rem, 4vw, 3.5rem);
+      }
+      .g2 {
+        grid-template-columns: repeat(auto-fit, minmax(min(100%, 26rem), 1fr));
+      }
+      .g3 {
+        grid-template-columns: repeat(auto-fit, minmax(min(100%, 18rem), 1fr));
+      }
+      .phones {
+        display: flex;
+        flex-wrap: wrap;
+        gap: clamp(1rem, 3vw, 2.5rem);
+        justify-content: center;
+        margin-top: clamp(2rem, 4vw, 3.5rem);
+      }
+
+      /* Molduras: navegador para o desktop, celular para o mobile. */
+      figure {
+        margin: 0;
+      }
+      .browser {
+        overflow: hidden;
+        border-radius: var(--radius);
+        background: var(--white);
+        box-shadow: var(--shadow);
+        border: 1px solid var(--line);
+      }
+      .browser::before {
+        content: '';
+        display: block;
+        height: 1.75rem;
+        background:
+          radial-gradient(circle at 1rem 50%, var(--line) 0.28rem, transparent 0.3rem),
+          radial-gradient(circle at 1.8rem 50%, var(--line) 0.28rem, transparent 0.3rem),
+          radial-gradient(circle at 2.6rem 50%, var(--line) 0.28rem, transparent 0.3rem), var(--sand-2);
+        border-bottom: 1px solid var(--line);
+      }
+      .phone {
+        width: min(100%, 15rem);
+        padding: 0.5rem;
+        border-radius: 2.25rem;
+        background: var(--ink);
+        box-shadow: var(--shadow);
+      }
+      .phone img {
+        border-radius: 1.8rem;
+      }
+      figcaption {
+        margin-top: 0.75rem;
+        font-size: 0.875rem;
+        color: var(--muted);
+      }
+      .dark figcaption {
+        color: var(--sand);
+      }
+      figcaption strong {
+        color: var(--ink);
+        font-weight: 500;
+      }
+      .dark figcaption strong {
+        color: var(--cream);
+      }
+      .phone + figcaption,
+      .phone-figure figcaption {
+        text-align: center;
+      }
+
+      /* Capa */
+      .cover {
+        position: relative;
+        min-height: 100svh;
+        display: flex;
+        align-items: flex-end;
+        overflow: hidden;
+        background: var(--teal);
+        color: var(--cream);
+      }
+      .cover img {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: 50% 30%;
+        opacity: 0.7;
+      }
+      .cover::after {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(to top, var(--teal) 10%, transparent 70%);
+      }
+      .cover .wrap {
+        position: relative;
+        z-index: 1;
+        padding-bottom: clamp(3rem, 8vh, 6rem);
+        width: 100%;
+      }
+      .cover h1 {
+        color: var(--cream);
+        font-size: clamp(3rem, 2rem + 5vw, 6rem);
+        margin: 1rem 0;
+      }
+      .cover .sub {
+        font-family: var(--serif);
+        font-style: italic;
+        font-size: clamp(1.5rem, 1.2rem + 1.5vw, 2.25rem);
+        color: var(--cream);
+      }
+      .cover .meta {
+        margin-top: 2rem;
+        color: var(--gold-2);
+      }
+
+      /* Índice */
+      nav.toc ol {
+        list-style: none;
+        margin: 2.5rem 0 0;
+        padding: 0;
+        display: grid;
+        gap: 0.25rem 2rem;
+        grid-template-columns: repeat(auto-fit, minmax(min(100%, 18rem), 1fr));
+        counter-reset: toc;
+      }
+      nav.toc li {
+        counter-increment: toc;
+      }
+      nav.toc a {
+        display: flex;
+        gap: 1rem;
+        align-items: baseline;
+        min-height: 2.75rem;
+        padding: 0.5rem 0;
+        border-bottom: 1px solid var(--line);
+        text-decoration: none;
+        font-family: var(--serif);
+        font-size: 1.5rem;
+        color: var(--teal);
+      }
+      nav.toc a::before {
+        content: counter(toc, decimal-leading-zero);
+        font-size: 1.1rem;
+        color: var(--gold);
+      }
+      nav.toc a:hover {
+        color: var(--teal-3);
+      }
+
+      /* Fluxo */
+      .flow {
+        list-style: none;
+        padding: 0;
+        margin: clamp(2rem, 4vw, 3.5rem) 0 0;
+        display: grid;
+        gap: 1rem;
+        grid-template-columns: repeat(auto-fit, minmax(min(100%, 12rem), 1fr));
+        counter-reset: step;
+      }
+      .flow li {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        gap: 0.75rem;
+        counter-increment: step;
+      }
+      .flow .shot {
+        aspect-ratio: 16 / 11;
+        overflow: hidden;
+        border-radius: 12px;
+        border: 1px solid var(--teal-3);
+        background: var(--teal-2);
+      }
+      .flow .shot img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: top;
+      }
+      .flow h3 {
+        font-size: 1.5rem;
+        display: flex;
+        gap: 0.6rem;
+        align-items: baseline;
+      }
+      .flow h3::before {
+        content: counter(step, decimal-leading-zero);
+        font-size: 1rem;
+        color: var(--gold-2);
+      }
+      .flow p {
+        font-size: 0.9rem;
+        color: var(--sand);
+      }
+      @media (min-width: 64rem) {
+        .flow li:not(:last-child)::after {
+          content: '→';
+          position: absolute;
+          right: -0.85rem;
+          top: 22%;
+          color: var(--gold-2);
+          font-size: 1.25rem;
+        }
+      }
+
+      /* Listas e tabelas */
+      .points {
+        display: grid;
+        gap: 1.25rem 2rem;
+        grid-template-columns: repeat(auto-fit, minmax(min(100%, 20rem), 1fr));
+        margin: clamp(2rem, 4vw, 3rem) 0 0;
+        padding: 0;
+        list-style: none;
+      }
+      .points li {
+        border-top: 1px solid var(--gold);
+        padding-top: 1rem;
+      }
+      .dark .points li {
+        border-top-color: var(--gold-2);
+      }
+      .points strong {
+        display: block;
+        font-family: var(--serif);
+        font-size: 1.5rem;
+        font-weight: 500;
+        color: var(--teal);
+        margin-bottom: 0.25rem;
+      }
+      .dark .points strong {
+        color: var(--cream);
+      }
+      .dark .points p {
+        color: var(--sand);
+      }
+      .table-wrap {
+        overflow-x: auto;
+        margin-top: clamp(2rem, 4vw, 3rem);
+        border-radius: var(--radius);
+        border: 1px solid var(--line);
+        background: var(--white);
+        box-shadow: var(--shadow);
+      }
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 0.95rem;
+        min-width: 40rem;
+      }
+      th,
+      td {
+        text-align: left;
+        vertical-align: top;
+        padding: 0.9rem 1.1rem;
+        border-bottom: 1px solid var(--line);
+      }
+      thead th {
+        background: var(--sand-2);
+        font-size: 0.7rem;
+        font-weight: 500;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+      }
+      tbody th {
+        font-family: var(--serif);
+        font-size: 1.25rem;
+        font-weight: 500;
+        color: var(--teal);
+        white-space: nowrap;
+      }
+      tr:last-child th,
+      tr:last-child td {
+        border-bottom: 0;
+      }
+      .figures {
+        display: grid;
+        gap: 1rem;
+        grid-template-columns: repeat(auto-fit, minmax(min(100%, 13rem), 1fr));
+        margin-top: clamp(2rem, 4vw, 3rem);
+      }
+      .figures div {
+        border-top: 1px solid var(--gold-2);
+        padding-top: 1rem;
+      }
+      .figures b {
+        display: block;
+        font-family: var(--serif);
+        font-weight: 400;
+        font-size: clamp(2.75rem, 2rem + 2.5vw, 4rem);
+        line-height: 1;
+        color: var(--cream);
+      }
+      .figures span {
+        color: var(--sand);
+        font-size: 0.9rem;
+      }
+      .note {
+        margin-top: 1.5rem;
+        font-size: 0.875rem;
+        color: var(--muted);
+        max-width: 48rem;
+      }
+      .dark .note {
+        color: var(--sand);
+      }
+      footer {
+        padding: 3rem 0;
+        background: var(--teal);
+        color: var(--sand);
+        font-size: 0.875rem;
+      }
+      footer .wrap {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        gap: 1rem;
+      }
+      @media (prefers-reduced-motion: reduce) {
+        html {
+          scroll-behavior: auto;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="cover">
+      <img src="img/capa.webp" alt="" width="1920" height="1080" fetchpriority="high" />
+      <div class="wrap">
+        <p class="caps meta">AGI Incorporações · San Remo</p>
+        <h1>Patrimônio com identidade, agora também na tela.</h1>
+        <p class="sub">Site da AGI, hub do San Remo e painel de leads.</p>
+        <p class="caps meta">Apresentação do projeto · outubro de 2026 · AplicarOn</p>
+      </div>
+    </header>
+
+    <main>
+      <section class="slide" aria-labelledby="indice">
+        <div class="wrap">
+          <p class="caps eyebrow">O que está aqui</p>
+          <h2 id="indice" class="title">Do anúncio ao painel</h2>
+          <span class="rule" aria-hidden="true"></span>
+          <p class="lead">
+            Um aplicativo só, com três partes no mesmo banco: o site da AGI, o hub de cada empreendimento (o
+            San Remo é o primeiro da coleção) e o painel onde a equipe acompanha cada contato. O que a AGI
+            muda no painel aparece no site na hora, sem novo deploy.
+          </p>
+          <nav class="toc" aria-label="Índice">
+            <ol>
+              <li><a href="#fluxo">O fluxo em uma imagem</a></li>
+              <li><a href="#site">O site da AGI</a></li>
+              <li><a href="#san-remo">O San Remo em oito páginas</a></li>
+              <li><a href="#captacao">Captação</a></li>
+              <li><a href="#painel">O painel da AGI</a></li>
+              <li><a href="#seguranca">Segurança e LGPD</a></li>
+              <li><a href="#medicao">Medição e relatório</a></li>
+              <li><a href="#qualidade">Velocidade e qualidade</a></li>
+              <li><a href="#proximos">Próximos passos</a></li>
+            </ol>
+          </nav>
+        </div>
+      </section>
+
+      <section id="fluxo" class="slide dark" aria-labelledby="fluxo-titulo">
+        <div class="wrap">
+          <p class="caps eyebrow">01 · O fluxo em uma imagem</p>
+          <h2 id="fluxo-titulo" class="title">Cada contato chega sabendo de onde veio</h2>
+          <span class="rule" aria-hidden="true"></span>
+          <ol class="flow">
+            <li>
+              <div class="shot">
+                <img
+                  src="img/painel-canais.webp"
+                  alt="Canais com link e QR code no painel"
+                  width="1600"
+                  height="1000"
+                  loading="lazy"
+                />
+              </div>
+              <h3>Anúncio ou QR</h3>
+              <p>Cada canal (book, placa, Instagram, anúncios) tem link e QR próprios, gerados no painel.</p>
+            </li>
+            <li>
+              <div class="shot">
+                <img
+                  src="img/hub-inicio.webp"
+                  alt="Abertura do San Remo"
+                  width="1600"
+                  height="1000"
+                  loading="lazy"
+                />
+              </div>
+              <h3>San Remo</h3>
+              <p>A página do empreendimento abre na fachada, com uma ideia por cena.</p>
+            </li>
+            <li>
+              <div class="shot">
+                <img
+                  src="img/hub-fachada-noite.webp"
+                  alt="Fachada interativa à noite"
+                  width="1600"
+                  height="1000"
+                  loading="lazy"
+                />
+              </div>
+              <h3>Interativo</h3>
+              <p>Fachada de dia e de noite, planta, térreo e mapa, explorados com as próprias mãos.</p>
+            </li>
+            <li>
+              <div class="shot">
+                <img
+                  src="img/hub-contato.webp"
+                  alt="Formulários de contato do San Remo"
+                  width="1600"
+                  height="1000"
+                  loading="lazy"
+                />
+              </div>
+              <h3>WhatsApp ou formulário</h3>
+              <p>Mensagem pronta por página ou um formulário curto, sem cadastro.</p>
+            </li>
+            <li>
+              <div class="shot">
+                <img
+                  src="img/painel-lead.webp"
+                  alt="Detalhe de um contato no painel"
+                  width="1600"
+                  height="1000"
+                  loading="lazy"
+                />
+              </div>
+              <h3>Painel da AGI</h3>
+              <p>O contato chega com a origem, o caminho de páginas e um aviso por e-mail.</p>
+            </li>
+          </ol>
+        </div>
+      </section>
+
+      <section id="site" class="slide" aria-labelledby="site-titulo">
+        <div class="wrap">
+          <p class="caps eyebrow">02 · O site da AGI</p>
+          <h2 id="site-titulo" class="title">Uma construtora boutique se apresenta</h2>
+          <span class="rule" aria-hidden="true"></span>
+          <p class="lead">
+            Home com a tese da AGI, quem constrói, a coleção de empreendimentos (vinda do banco: um novo
+            aparece sem deploy), contato e política de privacidade.
+          </p>
+          <div class="grid g2">
+            <figure>
+              <div class="browser">
+                <img src="img/site-home.webp" alt="Home da AGI" width="1600" height="1000" loading="lazy" />
+              </div>
+              <figcaption>
+                <strong>Home.</strong> A tese da construtora e o primeiro da coleção em destaque.
+              </figcaption>
+            </figure>
+            <figure>
+              <div class="browser">
+                <img
+                  src="img/site-quem-constroi.webp"
+                  alt="Página Quem constrói"
+                  width="1600"
+                  height="1000"
+                  loading="lazy"
+                />
+              </div>
+              <figcaption>
+                <strong>Quem constrói.</strong> O que faz a AGI diferente, com as frases do book.
+              </figcaption>
+            </figure>
+            <figure>
+              <div class="browser">
+                <img
+                  src="img/site-empreendimentos.webp"
+                  alt="Lista de empreendimentos"
+                  width="1600"
+                  height="1000"
+                  loading="lazy"
+                />
+              </div>
+              <figcaption><strong>Empreendimentos.</strong> A coleção, lida do banco.</figcaption>
+            </figure>
+            <figure class="phone-figure" style="display: grid; justify-items: center">
+              <div class="phone">
+                <img
+                  src="img/m-site-home.webp"
+                  alt="Home da AGI no celular"
+                  width="780"
+                  height="1587"
+                  loading="lazy"
+                />
+              </div>
+              <figcaption><strong>No celular,</strong> de onde chega quase todo mundo.</figcaption>
+            </figure>
+          </div>
+        </div>
+      </section>
+
+      <section id="san-remo" class="slide sand" aria-labelledby="sr-titulo">
+        <div class="wrap">
+          <p class="caps eyebrow">03 · O San Remo em oito páginas</p>
+          <h2 id="sr-titulo" class="title">Um capítulo por vez, como no book</h2>
+          <span class="rule" aria-hidden="true"></span>
+          <p class="lead">
+            Início, O San Remo, Arquitetura, O lugar, Apartamento, Áreas comuns, Galeria e Contato, em
+            sequência, com “próximo capítulo” no fim de cada página. Tudo é componente do empreendimento: o
+            segundo da coleção usa os mesmos.
+          </p>
+          <div class="grid g2">
+            <figure>
+              <div class="browser">
+                <img
+                  src="img/hub-inicio.webp"
+                  alt="Abertura do hub do San Remo"
+                  width="1600"
+                  height="1000"
+                  loading="lazy"
+                />
+              </div>
+              <figcaption>
+                <strong>Início.</strong> A fachada em tela cheia e “a lagoa a duzentos metros”.
+              </figcaption>
+            </figure>
+            <figure>
+              <div class="browser">
+                <img
+                  src="img/hub-o-san-remo.webp"
+                  alt="Página O San Remo"
+                  width="1600"
+                  height="1000"
+                  loading="lazy"
+                />
+              </div>
+              <figcaption>
+                <strong>O San Remo.</strong> Nove unidades, cinco pavimentos, dois por andar.
+              </figcaption>
+            </figure>
+            <figure>
+              <div class="browser">
+                <img
+                  src="img/hub-fachada-dia.webp"
+                  alt="Fachada interativa de dia com pontos numerados"
+                  width="1600"
+                  height="1000"
+                  loading="lazy"
+                />
+              </div>
+              <figcaption>
+                <strong>Arquitetura, de dia.</strong> Sete pontos da fachada, em três vistas.
+              </figcaption>
+            </figure>
+            <figure>
+              <div class="browser">
+                <img
+                  src="img/hub-fachada-noite.webp"
+                  alt="Fachada interativa à noite"
+                  width="1600"
+                  height="1000"
+                  loading="lazy"
+                />
+              </div>
+              <figcaption>
+                <strong>E à noite.</strong> Um controle desliza da luz do dia para a iluminação cênica.
+              </figcaption>
+            </figure>
+            <figure>
+              <div class="browser">
+                <img
+                  src="img/hub-planta-final-01.webp"
+                  alt="Planta interativa, final 01"
+                  width="1600"
+                  height="1000"
+                  loading="lazy"
+                />
+              </div>
+              <figcaption>
+                <strong>Apartamento, final 01.</strong> Dez pontos na planta, cada um com o ambiente.
+              </figcaption>
+            </figure>
+            <figure>
+              <div class="browser">
+                <img
+                  src="img/hub-planta-final-02.webp"
+                  alt="Planta interativa, final 02"
+                  width="1600"
+                  height="1000"
+                  loading="lazy"
+                />
+              </div>
+              <figcaption>
+                <strong>Final 02.</strong> A outra unidade do andar, espelhada no eixo do hall.
+              </figcaption>
+            </figure>
+            <figure>
+              <div class="browser">
+                <img
+                  src="img/hub-mapa-tela-cheia.webp"
+                  alt="Mapa em tela cheia com distâncias"
+                  width="1600"
+                  height="1000"
+                  loading="lazy"
+                />
+              </div>
+              <figcaption>
+                <strong>O lugar.</strong> O mapa em tela cheia, com arrastar e aproximar.
+              </figcaption>
+            </figure>
+            <figure>
+              <div class="browser">
+                <img
+                  src="img/hub-terreo.webp"
+                  alt="Térreo interativo"
+                  width="1600"
+                  height="1000"
+                  loading="lazy"
+                />
+              </div>
+              <figcaption>
+                <strong>Áreas comuns.</strong> O térreo com o salão, as entradas e as nove vagas.
+              </figcaption>
+            </figure>
+            <figure>
+              <div class="browser">
+                <img
+                  src="img/hub-galeria.webp"
+                  alt="Galeria editorial"
+                  width="1600"
+                  height="1000"
+                  loading="lazy"
+                />
+              </div>
+              <figcaption><strong>Galeria.</strong> Por categoria, com ampliação.</figcaption>
+            </figure>
+            <figure>
+              <div class="browser">
+                <img
+                  src="img/hub-contato.webp"
+                  alt="Contato do San Remo"
+                  width="1600"
+                  height="1000"
+                  loading="lazy"
+                />
+              </div>
+              <figcaption>
+                <strong>Contato.</strong> Pedir informações, receber o book ou agendar visita.
+              </figcaption>
+            </figure>
+          </div>
+          <div class="phones">
+            <figure class="phone-figure">
+              <div class="phone">
+                <img
+                  src="img/m-hub-inicio.webp"
+                  alt="San Remo no celular"
+                  width="780"
+                  height="1587"
+                  loading="lazy"
+                />
+              </div>
+              <figcaption>Abertura no celular</figcaption>
+            </figure>
+            <figure class="phone-figure">
+              <div class="phone">
+                <img
+                  src="img/m-hub-apartamento.webp"
+                  alt="Apartamento no celular"
+                  width="780"
+                  height="1587"
+                  loading="lazy"
+                />
+              </div>
+              <figcaption>Apartamento</figcaption>
+            </figure>
+            <figure class="phone-figure">
+              <div class="phone">
+                <img
+                  src="img/m-hub-barra-contato.webp"
+                  alt="Barra de contato fixa no celular"
+                  width="780"
+                  height="1587"
+                  loading="lazy"
+                />
+              </div>
+              <figcaption>Barra de contato fixa</figcaption>
+            </figure>
+          </div>
+        </div>
+      </section>
+
+      <section id="captacao" class="slide" aria-labelledby="captacao-titulo">
+        <div class="wrap">
+          <p class="caps eyebrow">04 · Captação</p>
+          <h2 id="captacao-titulo" class="title">Falar com a equipe nunca está a mais de um toque</h2>
+          <span class="rule" aria-hidden="true"></span>
+          <ul class="points">
+            <li>
+              <strong>Sem cadastro</strong>Formulários curtos: nome e WhatsApp (o book aceita só e-mail). O
+              que foi digitado nunca se perde num erro.
+            </li>
+            <li>
+              <strong>WhatsApp com contexto</strong>Mensagem pronta por página e um balão de conversa que
+              aparece uma vez, sem cobrir a página.
+            </li>
+            <li>
+              <strong>Origem registrada</strong>Primeira página, campanha (UTM ou QR) e o caminho até o
+              contato vão junto com o lead.
+            </li>
+            <li>
+              <strong>Nada se perde</strong>Lead gravado antes do aviso; o e-mail para a AGI tem fila com nova
+              tentativa e não leva dado pessoal.
+            </li>
+          </ul>
+          <div class="grid g2">
+            <figure>
+              <div class="browser">
+                <img
+                  src="img/hub-unidades.webp"
+                  alt="Disponibilidade das unidades"
+                  width="1600"
+                  height="1000"
+                  loading="lazy"
+                />
+              </div>
+              <figcaption>
+                <strong>Disponibilidade.</strong> As nove unidades com estado vindo do painel e “Tenho
+                interesse nesta unidade”. Fica fora do site até a AGI liberar (captura da prévia).
+              </figcaption>
+            </figure>
+            <figure>
+              <div class="browser">
+                <img
+                  src="img/obrigado.webp"
+                  alt="Página de obrigado"
+                  width="1600"
+                  height="1000"
+                  loading="lazy"
+                />
+              </div>
+              <figcaption>
+                <strong>Obrigado.</strong> O próximo passo explicado; com o PDF no painel, o book sai na hora.
+              </figcaption>
+            </figure>
+          </div>
+          <div class="phones">
+            <figure class="phone-figure">
+              <div class="phone">
+                <img
+                  src="img/m-hub-contato.webp"
+                  alt="Formulário no celular"
+                  width="780"
+                  height="1587"
+                  loading="lazy"
+                />
+              </div>
+              <figcaption>Formulário no celular</figcaption>
+            </figure>
+            <figure class="phone-figure">
+              <div class="phone">
+                <img
+                  src="img/m-whatsapp-balao.webp"
+                  alt="Balão do WhatsApp"
+                  width="780"
+                  height="1587"
+                  loading="lazy"
+                />
+              </div>
+              <figcaption>Balão do WhatsApp (prévia, à espera do número)</figcaption>
+            </figure>
+          </div>
+        </div>
+      </section>
+
+      <section id="painel" class="slide sand" aria-labelledby="painel-titulo">
+        <div class="wrap">
+          <p class="caps eyebrow">05 · O painel da AGI</p>
+          <h2 id="painel-titulo" class="title">
+            A equipe comercial sabe quem chegou, de onde e o que já foi feito
+          </h2>
+          <span class="rule" aria-hidden="true"></span>
+          <p class="lead">
+            Pensado para o celular de quem está vendendo. Entrada com senha e aplicativo autenticador; sem
+            cadastro público.
+          </p>
+          <div class="grid g2">
+            <figure>
+              <div class="browser">
+                <img
+                  src="img/painel-leads.webp"
+                  alt="Lista de leads com filtros"
+                  width="1600"
+                  height="1000"
+                  loading="lazy"
+                />
+              </div>
+              <figcaption>
+                <strong>Leads.</strong> Filtros por empreendimento, origem, status, período e nome; novos em
+                destaque; CSV.
+              </figcaption>
+            </figure>
+            <figure>
+              <div class="browser">
+                <img
+                  src="img/painel-lead.webp"
+                  alt="Detalhe de um lead"
+                  width="1600"
+                  height="1000"
+                  loading="lazy"
+                />
+              </div>
+              <figcaption>
+                <strong>Um contato.</strong> Origem completa, status, anotações e histórico com autor e hora;
+                WhatsApp a um toque.
+              </figcaption>
+            </figure>
+            <figure>
+              <div class="browser">
+                <img
+                  src="img/painel-canais.webp"
+                  alt="Canais e QR codes"
+                  width="1600"
+                  height="1000"
+                  loading="lazy"
+                />
+              </div>
+              <figcaption>
+                <strong>Canais e QR.</strong> Link com UTM e QR em PNG e SVG para a gráfica.
+              </figcaption>
+            </figure>
+            <figure>
+              <div class="browser">
+                <img
+                  src="img/painel-unidades.webp"
+                  alt="Unidades no painel"
+                  width="1600"
+                  height="1000"
+                  loading="lazy"
+                />
+              </div>
+              <figcaption>
+                <strong>Unidades.</strong> Disponível, reservada ou vendida; preço só quando a AGI liberar.
+              </figcaption>
+            </figure>
+            <figure>
+              <div class="browser">
+                <img
+                  src="img/painel-textos.webp"
+                  alt="Editor de textos"
+                  width="1600"
+                  height="1000"
+                  loading="lazy"
+                />
+              </div>
+              <figcaption>
+                <strong>Textos.</strong> Por página, com aprovação dos provisórios e aviso nas frases do book.
+              </figcaption>
+            </figure>
+            <figure>
+              <div class="browser">
+                <img
+                  src="img/painel-pontos.webp"
+                  alt="Editor de pontos dos interativos"
+                  width="1600"
+                  height="1000"
+                  loading="lazy"
+                />
+              </div>
+              <figcaption>
+                <strong>Pontos dos interativos.</strong> Toque na imagem para posicionar; o site mostra na
+                hora.
+              </figcaption>
+            </figure>
+            <figure>
+              <div class="browser">
+                <img
+                  src="img/painel-empreendimento.webp"
+                  alt="Dados e publicação do empreendimento"
+                  width="1600"
+                  height="1000"
+                  loading="lazy"
+                />
+              </div>
+              <figcaption>
+                <strong>Empreendimento.</strong> Dados, book para download e publicação; um novo nasce com os
+                mesmos componentes.
+              </figcaption>
+            </figure>
+            <figure>
+              <div class="browser">
+                <img
+                  src="img/painel-mfa.webp"
+                  alt="Cadastro do aplicativo autenticador"
+                  width="1600"
+                  height="1000"
+                  loading="lazy"
+                />
+              </div>
+              <figcaption>
+                <strong>Entrada.</strong> Senha e código do aplicativo autenticador, sempre.
+              </figcaption>
+            </figure>
+          </div>
+          <div class="phones">
+            <figure class="phone-figure">
+              <div class="phone">
+                <img
+                  src="img/m-painel-leads.webp"
+                  alt="Leads no celular"
+                  width="780"
+                  height="1587"
+                  loading="lazy"
+                />
+              </div>
+              <figcaption>Leads no celular</figcaption>
+            </figure>
+            <figure class="phone-figure">
+              <div class="phone">
+                <img
+                  src="img/m-painel-lead.webp"
+                  alt="Contato no celular"
+                  width="780"
+                  height="1587"
+                  loading="lazy"
+                />
+              </div>
+              <figcaption>Um contato no celular</figcaption>
+            </figure>
+          </div>
+        </div>
+      </section>
+
+      <section id="seguranca" class="slide" aria-labelledby="seguranca-titulo">
+        <div class="wrap">
+          <p class="caps eyebrow">06 · Segurança e LGPD</p>
+          <h2 id="seguranca-titulo" class="title">Quem vê o quê</h2>
+          <span class="rule" aria-hidden="true"></span>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th scope="col">Quem</th>
+                  <th scope="col">Vê</th>
+                  <th scope="col">Faz</th>
+                  <th scope="col">Nunca</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th scope="row">Visitante</th>
+                  <td>O site e o hub publicados</td>
+                  <td>Envia contato, sem cadastro</td>
+                  <td>Recebe chave do banco; é rastreado por cookie, IP ou identificador</td>
+                </tr>
+                <tr>
+                  <th scope="row">Equipe da AGI</th>
+                  <td>Leads, canais, relatório, conteúdo (só com senha e autenticador)</td>
+                  <td>Muda status, anota, exporta, edita textos, imagens, pontos e unidades</td>
+                  <td>Apaga lead ou altera o que a pessoa enviou</td>
+                </tr>
+                <tr>
+                  <th scope="row">AplicarOn</th>
+                  <td>O que a manutenção exigir</td>
+                  <td>Cria os acessos da equipe (não há cadastro público)</td>
+                  <td>Usa dado real de lead antes do portão de produção</td>
+                </tr>
+                <tr>
+                  <th scope="row">Sistema</th>
+                  <td>O lead, no momento de gravar</td>
+                  <td>Grava, avisa a AGI por e-mail sem dado pessoal, registra a medição</td>
+                  <td>Leva nome, contato ou mensagem para log, e-mail ou monitoramento</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <ul class="points">
+            <li>
+              <strong>Banco fechado por padrão</strong>Toda tabela com proteção por linha; sem autenticador,
+              nenhuma linha volta. Testado a cada mudança.
+            </li>
+            <li>
+              <strong>LGPD</strong>Mínimo necessário, finalidade com link para a política, novidades só com a
+              caixa marcada, anonimização por função.
+            </li>
+            <li>
+              <strong>Imagens do painel</strong>Tipo conferido pelo conteúdo, nunca SVG, reprocessadas sem
+              dados da câmera, nome aleatório.
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <section id="medicao" class="slide dark" aria-labelledby="medicao-titulo">
+        <div class="wrap">
+          <p class="caps eyebrow">07 · Medição e relatório</p>
+          <h2 id="medicao-titulo" class="title">O relatório de 30 dias sai do próprio painel</h2>
+          <span class="rule" aria-hidden="true"></span>
+          <p class="lead">
+            Contatos por canal, por página de entrada e por semana; e o que as pessoas fizeram no site:
+            páginas vistas, cliques no WhatsApp, formulários começados e enviados, uso da fachada, da planta,
+            do mapa e da galeria. Sem cookie e sem identificar ninguém.
+          </p>
+          <div class="grid">
+            <figure>
+              <div class="browser">
+                <img
+                  src="img/painel-relatorio.webp"
+                  alt="Relatório no painel"
+                  width="1600"
+                  height="1000"
+                  loading="lazy"
+                />
+              </div>
+              <figcaption>Relatório com dados fictícios de demonstração.</figcaption>
+            </figure>
+          </div>
+        </div>
+      </section>
+
+      <section id="qualidade" class="slide" aria-labelledby="qualidade-titulo">
+        <div class="wrap">
+          <p class="caps eyebrow">08 · Velocidade e qualidade</p>
+          <h2 id="qualidade-titulo" class="title">Rápido no 4G, acessível e testado</h2>
+          <span class="rule" aria-hidden="true"></span>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th scope="col">Página</th>
+                  <th scope="col">Peso total</th>
+                  <th scope="col">Imagem principal na tela (LCP)</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th scope="row">Home da AGI</th>
+                  <td>433 KB</td>
+                  <td>1,05 s</td>
+                </tr>
+                <tr>
+                  <th scope="row">San Remo · Início</th>
+                  <td>487 KB</td>
+                  <td>1,68 s</td>
+                </tr>
+                <tr>
+                  <th scope="row">Arquitetura</th>
+                  <td>439 KB</td>
+                  <td>0,98 s</td>
+                </tr>
+                <tr>
+                  <th scope="row">Apartamento</th>
+                  <td>452 KB</td>
+                  <td>1,42 s</td>
+                </tr>
+                <tr>
+                  <th scope="row">Galeria</th>
+                  <td>537 KB</td>
+                  <td>1,07 s</td>
+                </tr>
+                <tr>
+                  <th scope="row">Contato do San Remo</th>
+                  <td>346 KB</td>
+                  <td>0,96 s</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="note">
+            Celular emulado (Pixel 7) em 4G simulado (1,6 Mbps, 150 ms) e processador 4× mais lento; mediana
+            de três medições. Meta do projeto: abaixo de 2,5 s em todas as páginas do San Remo. Lista completa
+            em docs/performance.md.
+          </p>
+        </div>
+      </section>
+
+      <section class="slide dark" aria-labelledby="testes-titulo">
+        <div class="wrap">
+          <p class="caps eyebrow">Testes automáticos, a cada envio de código</p>
+          <h2 id="testes-titulo" class="title">O que quebra, avisa antes de ir ao ar</h2>
+          <span class="rule" aria-hidden="true"></span>
+          <div class="figures">
+            <div><b>165</b><span>testes de ponta a ponta no navegador, no celular e no computador</span></div>
+            <div><b>120</b><span>testes do banco: quem lê, quem grava, o que nunca se apaga</span></div>
+            <div><b>104</b><span>testes de regras: telefone, origem, CSV, preço, textos</span></div>
+            <div><b>0</b><span>violações de acessibilidade nas 17 páginas públicas e no painel</span></div>
+          </div>
+        </div>
+      </section>
+
+      <section id="proximos" class="slide" aria-labelledby="proximos-titulo">
+        <div class="wrap">
+          <p class="caps eyebrow">09 · Próximos passos</p>
+          <h2 id="proximos-titulo" class="title">Para ir ao ar, e depois</h2>
+          <span class="rule" aria-hidden="true"></span>
+          <ul class="points">
+            <li>
+              <strong>Com a AGI, antes de publicar</strong>Domínio e e-mail de envio, WhatsApp e dados da
+              empresa, endereço do San Remo, marca oficial, política com validação jurídica e aprovação dos
+              textos provisórios.
+            </li>
+            <li>
+              <strong>No dia</strong>Projeto em produção em São Paulo, regras de firewall, acessos da equipe e
+              treino com o guia do painel; canais e QR codes entregues.
+            </li>
+            <li>
+              <strong>Segundo empreendimento</strong>Já cadastrável no painel: mesmas páginas e componentes,
+              textos e imagens próprios.
+            </li>
+            <li>
+              <strong>Área do interessado</strong>Salvar unidades, acompanhar a obra e ver a proposta, como
+              fase própria.
+            </li>
+            <li>
+              <strong>CRM</strong>Os leads já têm origem, status e histórico estruturados para seguir para um
+              CRM imobiliário.
+            </li>
+          </ul>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="wrap">
+        <p>AGI Incorporações · San Remo · Barra Velha, Santa Catarina</p>
+        <p>Telas com dados fictícios de demonstração. Imagens do empreendimento meramente ilustrativas.</p>
+      </div>
+    </footer>
+  </body>
+</html>
